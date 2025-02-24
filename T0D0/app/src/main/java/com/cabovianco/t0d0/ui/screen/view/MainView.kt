@@ -43,10 +43,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cabovianco.t0d0.data.repository.model.Task
-import com.cabovianco.t0d0.ui.screen.viewModel.MainScreenViewModel
+import com.cabovianco.t0d0.ui.screen.viewModel.MainViewModel
 
 @Composable
-fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
+fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
 
     Scaffold(
@@ -107,7 +107,7 @@ private fun TopBar() {
 }
 
 @Composable
-private fun AddTaskButton(viewModel: MainScreenViewModel) {
+private fun AddTaskButton(viewModel: MainViewModel) {
     val uiState by viewModel.uiState.collectAsState()
 
     LargeFloatingActionButton(
@@ -126,7 +126,7 @@ private fun AddTaskButton(viewModel: MainScreenViewModel) {
 }
 
 @Composable
-private fun AddTaskDialog(viewModel: MainScreenViewModel) {
+private fun AddTaskDialog(viewModel: MainViewModel) {
     TaskDialog(
         icon = "+1",
         title = "> ADD TASK",
@@ -182,7 +182,7 @@ private fun TaskDialog(
 }
 
 @Composable
-private fun TaskTextField(viewModel: MainScreenViewModel) {
+private fun TaskTextField(viewModel: MainViewModel) {
     val uiState by viewModel.uiState.collectAsState()
 
     OutlinedTextField(
@@ -211,7 +211,7 @@ private fun NoTasksFound(modifier: Modifier) {
 }
 
 @Composable
-private fun TasksFound(viewModel: MainScreenViewModel, modifier: Modifier) {
+private fun TasksFound(viewModel: MainViewModel, modifier: Modifier) {
     val uiState by viewModel.uiState.collectAsState()
 
     LazyColumn(
@@ -232,7 +232,7 @@ private fun TasksFound(viewModel: MainScreenViewModel, modifier: Modifier) {
 }
 
 @Composable
-private fun TasksList(viewModel: MainScreenViewModel, tasks: List<Task>, title: String) {
+private fun TasksList(viewModel: MainViewModel, tasks: List<Task>, title: String) {
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
@@ -258,7 +258,7 @@ private fun TasksList(viewModel: MainScreenViewModel, tasks: List<Task>, title: 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun TaskItem(viewModel: MainScreenViewModel, task: Task) {
+private fun TaskItem(viewModel: MainViewModel, task: Task) {
     val uiState by viewModel.uiState.collectAsState()
 
     Row(
@@ -298,7 +298,7 @@ private fun TaskItem(viewModel: MainScreenViewModel, task: Task) {
 }
 
 @Composable
-private fun EditTaskDialog(viewModel: MainScreenViewModel) {
+private fun EditTaskDialog(viewModel: MainViewModel) {
     val uiState by viewModel.uiState.collectAsState()
     TaskDialog(
         icon = "1",
@@ -319,7 +319,7 @@ private fun EditTaskDialog(viewModel: MainScreenViewModel) {
 }
 
 @Composable
-private fun DeleteTaskDialog(viewModel: MainScreenViewModel) {
+private fun DeleteTaskDialog(viewModel: MainViewModel) {
     val uiState by viewModel.uiState.collectAsState()
     TaskDialog(
         icon = "-1",
@@ -336,7 +336,7 @@ private fun DeleteTaskDialog(viewModel: MainScreenViewModel) {
 }
 
 @Composable
-private fun CheckButton(viewModel: MainScreenViewModel, task: Task) {
+private fun CheckButton(viewModel: MainViewModel, task: Task) {
     Box(
         modifier = Modifier
             .size(32.dp)

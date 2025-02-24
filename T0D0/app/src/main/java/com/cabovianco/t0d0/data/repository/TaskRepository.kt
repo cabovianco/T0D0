@@ -10,27 +10,21 @@ import javax.inject.Inject
 class TaskRepository @Inject constructor(
     private val taskDao: TaskDao
 ) {
+
     suspend fun insertTask(task: Task) {
         taskDao.insertTask(task.toEntity())
     }
 
     suspend fun getToDoTasks(): List<Task> {
-        return try {
-            taskDao.getNotDoneTasks().map { it.toItem() }
-        } catch (e: Exception) {
-            emptyList()
-        }
+        return taskDao.getNotDoneTasks().map { it.toItem() }
     }
 
     suspend fun getDoneTasks(): List<Task> {
-        return try {
-            taskDao.getDoneTasks().map { it.toItem() }
-        } catch (e: Exception) {
-            emptyList()
-        }
+        return taskDao.getDoneTasks().map { it.toItem() }
     }
 
     suspend fun deleteTask(task: TaskEntity) {
         taskDao.deleteTask(task)
     }
+
 }

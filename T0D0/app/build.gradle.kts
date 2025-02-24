@@ -56,14 +56,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.hilt.common)
     kapt(libs.hilt.android.compiler)
+
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.room.compiler)
-    implementation(libs.androidx.ui.text.google.fonts)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

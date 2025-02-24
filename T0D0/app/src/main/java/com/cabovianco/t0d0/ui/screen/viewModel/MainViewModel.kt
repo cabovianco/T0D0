@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainScreenViewModel @Inject constructor(
+class MainViewModel @Inject constructor(
     private val taskRepository: TaskRepository
 ) : ViewModel() {
 
@@ -42,11 +42,9 @@ class MainScreenViewModel @Inject constructor(
             _uiState.update {
                 it.copy(
                     doneTasks = taskRepository.getDoneTasks(),
-                    toDoTasks = taskRepository.getToDoTasks()
+                    toDoTasks = taskRepository.getToDoTasks(),
+                    isScreenLoading = false
                 )
-            }
-            _uiState.update {
-                it.copy(isScreenLoading = false)
             }
         }
     }
@@ -59,7 +57,7 @@ class MainScreenViewModel @Inject constructor(
 
     fun isTitleEmpty(): Boolean {
         _uiState.update {
-            it.copy(titleInputError = _uiState.value.title.isEmpty() || _uiState.value.title.isBlank())
+            it.copy(titleInputError = _uiState.value.title.isBlank())
         }
 
         return _uiState.value.titleInputError
@@ -139,4 +137,5 @@ class MainScreenViewModel @Inject constructor(
             it.copy(taskToDelete = task)
         }
     }
+
 }

@@ -9,6 +9,7 @@ import com.cabovianco.t0d0.data.local.entity.TaskEntity
 
 @Dao
 interface TaskDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: TaskEntity)
 
@@ -20,4 +21,5 @@ interface TaskDao {
 
     @Delete
     suspend fun deleteTask(task: TaskEntity)
+
 }
