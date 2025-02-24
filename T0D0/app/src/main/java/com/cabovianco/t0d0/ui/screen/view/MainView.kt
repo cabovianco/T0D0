@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cabovianco.t0d0.data.repository.model.Task
 import com.cabovianco.t0d0.ui.screen.viewModel.MainViewModel
+import com.cabovianco.t0d0.ui.theme.jetBrainsFont
 
 @Composable
 fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
@@ -100,6 +101,7 @@ private fun TopBar() {
                 text = "T0D0",
                 fontSize = MaterialTheme.typography.displaySmall.fontSize,
                 fontWeight = FontWeight.Bold,
+                fontFamily = jetBrainsFont,
                 maxLines = 1
             )
         }
@@ -116,7 +118,8 @@ private fun AddTaskButton(viewModel: MainViewModel) {
         Text(
             text = "+1",
             fontSize = MaterialTheme.typography.displayMedium.fontSize,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontFamily = jetBrainsFont,
         )
     }
 
@@ -159,24 +162,36 @@ private fun TaskDialog(
             TextButton(
                 onClick = { confirmButton() }
             ) {
-                Text(textButton)
+                Text(
+                    text = textButton,
+                    fontFamily = jetBrainsFont,
+                )
             }
         },
         dismissButton = {
             TextButton(
                 onClick = { dismissButton() }
             ) {
-                Text("Cancel")
+                Text(
+                    text = "Cancel",
+                    fontFamily = jetBrainsFont,
+                )
             }
         },
         icon = {
             Text(
                 text = icon,
                 fontSize = MaterialTheme.typography.displayMedium.fontSize,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                fontFamily = jetBrainsFont,
             )
         },
-        title = { Text(title) },
+        title = {
+            Text(
+                text = title,
+                fontFamily = jetBrainsFont,
+            )
+        },
         text = { body() }
     )
 }
@@ -190,8 +205,18 @@ private fun TaskTextField(viewModel: MainViewModel) {
         onValueChange = { viewModel.onTitleChange(it) },
         modifier = Modifier.fillMaxWidth(),
         textStyle = MaterialTheme.typography.bodyLarge,
-        label = { Text("Title") },
-        placeholder = { if (uiState.titleInputError) Text(text = "Required Field") },
+        label = {
+            Text(
+                text = "Title",
+                fontFamily = jetBrainsFont,
+            )
+        },
+        placeholder = {
+            if (uiState.titleInputError) Text(
+                text = "Required Field",
+                fontFamily = jetBrainsFont,
+            )
+        },
         isError = uiState.titleInputError,
         singleLine = true
     )
@@ -205,7 +230,8 @@ private fun NoTasksFound(modifier: Modifier) {
         Text(
             text = "No tasks found",
             modifier = Modifier.align(Alignment.Center),
-            fontSize = MaterialTheme.typography.bodySmall.fontSize
+            fontSize = MaterialTheme.typography.bodySmall.fontSize,
+            fontFamily = jetBrainsFont,
         )
     }
 }
@@ -242,9 +268,10 @@ private fun TasksList(viewModel: MainViewModel, tasks: List<Task>, title: String
         Column {
             Text(
                 text = title,
+                modifier = Modifier.padding(16.dp),
                 fontSize = MaterialTheme.typography.titleLarge.fontSize,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(16.dp)
+                fontFamily = jetBrainsFont
             )
 
             Column {
@@ -284,7 +311,8 @@ private fun TaskItem(viewModel: MainViewModel, task: Task) {
         Spacer(modifier = Modifier.width(16.dp))
         Text(
             text = task.title,
-            fontSize = MaterialTheme.typography.bodyLarge.fontSize
+            fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+            fontFamily = jetBrainsFont
         )
     }
 
@@ -354,6 +382,7 @@ private fun CheckButton(viewModel: MainViewModel, task: Task) {
                 .padding(4.dp),
             fontSize = MaterialTheme.typography.bodyMedium.fontSize,
             fontWeight = FontWeight.Bold,
+            fontFamily = jetBrainsFont,
             textAlign = TextAlign.Center
         )
     }
