@@ -6,7 +6,9 @@ import com.cabovianco.t0d0.data.local.entity.toItem
 import com.cabovianco.t0d0.data.repository.model.Task
 import com.cabovianco.t0d0.data.repository.model.toEntity
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class TaskRepository @Inject constructor(
     private val taskDao: TaskDao
 ) {
